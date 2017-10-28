@@ -1,18 +1,24 @@
 # Quadcopter simulator
 A quadcopter simulator with single and multi-quad simulations. The simulator supports time scaling (including real-time simulations) and headless mode (the simulator runs in background without a GUI update).
 
+![Single Quadcopter Simulation](/quad_sim.gif?raw=true "quad_sim")
+Single Quadcopter Simulation
+
+![Multi Quadcopter Simulation](/multiquad_sim.gif?raw=true "multiquad_sim")
+Multi Quadcopter Simulation
+
 ## Dependencies
-- Simulation of dynamics:
- - Numpy
- - Math
- - SciPy
-- GUI:
- - Matplotlib
- - Matplotlib Mapping Toolkits
-- Threading:
- - Time
- - Datetime
- - Threading
+ - Simulation of dynamics:
+  - Numpy
+  - Math
+  - SciPy
+ - GUI:
+  - Matplotlib
+  - Matplotlib Mapping Toolkits
+ - Threading:
+  - Time
+  - Datetime
+  - Threading
 
 ## How to run
 Clone the repository, move into the directory, and run the code:
@@ -60,7 +66,7 @@ A demo controller class. It is initialized using the quadcopter object and a con
 
 
 ## Changes
+- Added gifs
 
 ## To-do
 - Make separate README for single and double quadcopter simulators
-- Add gifs
