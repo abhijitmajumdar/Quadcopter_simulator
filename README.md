@@ -74,15 +74,18 @@ Two example implementation of controller class are provided. One is to implement
 ## Parameters
 - TIME_SCALING: Used to define how fast the simulator runs. Value of 1.0 corresponds to real-time simulations. Any smaller number makes the simulation faster and vice versa. A value of 0 runs the simulation run as fast as possible on the current hardware.
 - QUAD_DYNAMICS_UPDATE: The delta time over which the dynamics of the quadcopter are updated
-- CONTROLLER_DYNAMICS_UPDATE: The delta time over which the controller updates the motors
+- CONTROLLER_DYNAMICS_UPDATE: The delta time over which the controller updates the motors (Note: Changing this value would also cause the default controller parameters to behave differently)
 - QUADCOPTER(S): The parameters which define the quadcopter: initial position and orientation,length of arm, center radius, propeller size and weight.
-- CONTROLLER(N)PARAMETERS: The parameters which define the controller behavior: Motor limits, Tilt limits, Throttle offset, Linear PID, Linear to Angular Scaler and Angular PID
+- CONTROLLER(N)PARAMETERS: The parameters which define the controller behavior: Motor limits, Tilt limits, Yaw_Control_Limits, Throttle offset, Linear PID, Linear to Angular Scaler, Yaw_Rate_Scaler and Angular PID
 - GOAL(S): The goals to loop over
 
 
 
 
 ## Changes
+- Fixed the quad dynamics to wrap angles to [-pi,pi]
+- Fixed the yaw controller to determine shortest path to turn to
+- Changed the yaw controller to a rate controller for better yaw control
 - Added gifs
 - Seperated classes into different files quadcopter.py, controller.py and gui.py
 - Added an example velocity controller class and its implementation. Inherited from P2P class

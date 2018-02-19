@@ -60,6 +60,9 @@ class Quadcopter():
         R = np.dot(R_z, np.dot( R_y, R_x ))
         return R
 
+    def wrap_angle(self,val):
+        return( ( val + np.pi) % (2 * np.pi ) - np.pi )
+
     def state_dot(self, time, state, key):
         state_dot = np.zeros(12)
         # The velocities(t+1 x_dots equal the t x_dots)
@@ -88,6 +91,7 @@ class Quadcopter():
         for key in self.quads:
             self.ode.set_initial_value(self.quads[key]['state'],0).set_f_params(key)
             self.quads[key]['state'] = self.ode.integrate(self.ode.t + dt)
+            self.quads[key]['state'][6:9] = self.wrap_angle(self.quads[key]['state'][6:9])
             self.quads[key]['state'][2] = max(0,self.quads[key]['state'][2])
 
     def set_motor_speeds(self,quad_name,speeds):
