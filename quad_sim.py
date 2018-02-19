@@ -23,7 +23,7 @@ def Single_Point2Point():
                         'Linear_PID':{'P':[300,300,7000],'I':[0.04,0.04,4.5],'D':[450,450,5000]},
                         'Linear_To_Angular_Scaler':[1,1,0],
                         'Yaw_Rate_Scaler':0.18,
-                        'Angular_PID':{'P':[22000,22000,1500],'I':[0,0,0.01],'D':[12000,12000,1800]},
+                        'Angular_PID':{'P':[22000,22000,1500],'I':[0,0,1.2],'D':[12000,12000,0]},
                         }
 
     # Catch Ctrl+C to stop threads
@@ -62,7 +62,7 @@ def Multi_Point2Point():
                         'Linear_PID':{'P':[300,300,7000],'I':[0.04,0.04,4.5],'D':[450,450,5000]},
                         'Linear_To_Angular_Scaler':[1,1,0],
                         'Yaw_Rate_Scaler':0.18,
-                        'Angular_PID':{'P':[22000,22000,1500],'I':[0,0,0.01],'D':[12000,12000,1800]},
+                        'Angular_PID':{'P':[22000,22000,1500],'I':[0,0,1.2],'D':[12000,12000,0]},
                         }
     CONTROLLER_2_PARAMETERS = {'Motor_limits':[4000,9000],
                         'Tilt_limits':[-10,10],
@@ -71,7 +71,7 @@ def Multi_Point2Point():
                         'Linear_PID':{'P':[300,300,7000],'I':[0.04,0.04,4.5],'D':[450,450,5000]},
                         'Linear_To_Angular_Scaler':[1,1,0],
                         'Yaw_Rate_Scaler':0.18,
-                        'Angular_PID':{'P':[22000,22000,1500],'I':[0,0,0.01],'D':[12000,12000,1800]},
+                        'Angular_PID':{'P':[22000,22000,1500],'I':[0,0,1.2],'D':[12000,12000,0]},
                         }
 
     # Catch Ctrl+C to stop threads
@@ -112,7 +112,7 @@ def Single_Velocity():
                         'Linear_PID':{'P':[2000,2000,7000],'I':[0.25,0.25,4.5],'D':[50,50,5000]},
                         'Linear_To_Angular_Scaler':[1,1,0],
                         'Yaw_Rate_Scaler':0.18,
-                        'Angular_PID':{'P':[22000,22000,1500],'I':[0,0,0.01],'D':[12000,12000,1800]},
+                        'Angular_PID':{'P':[22000,22000,1500],'I':[0,0,1.2],'D':[12000,12000,0]},
                         }
 
     # Catch Ctrl+C to stop threads
