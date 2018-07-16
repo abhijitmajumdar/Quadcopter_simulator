@@ -135,7 +135,7 @@ class Quadcopter():
                 last_update = self.time
 
     def start_thread(self,dt=0.002,time_scaling=1):
-        self.thread_object = threading.Thread(target=self.thread_run,args=(dt,time_scaling))
+        self.thread_object = threading.Thread(target=self.thread_run,args=(dt,time_scaling),daemon=True)
         self.thread_object.start()
 
     def stop_thread(self):
