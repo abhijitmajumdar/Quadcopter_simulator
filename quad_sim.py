@@ -2,7 +2,7 @@ import quadcopter,gui,controller,q_controller
 import signal
 import sys
 import argparse
-import time
+import random
 
 # Constants
 TIME_SCALING = 0.0 # Any positive number(Smaller is faster). 1.0->Real Time, 0.0->Run as fast as possible
@@ -14,9 +14,9 @@ def Single_AI(gui_on, get_motor_speeds):
     # Set goals to go to
     GOALS = [(1,1,5)]
     YAWS = [0]
-    rand0 = random.rand()/10
-    rand1 = random.rand()/10
-    rand2 = random.rand()/10
+    rand0 = (random.random()-.5)/2
+    rand1 = (random.random()-.5)/2
+    rand2 = (random.random()-.5)/2
     # Define the quadcopters
     QUADCOPTER={'q1':{'position':[1,0,4],'orientation':[rand0,rand1,rand2],'L':0.3,'r':0.1,'prop_size':[10,4.5],'weight':1.2}}
     # Controller parameters
@@ -41,6 +41,7 @@ def Single_AI(gui_on, get_motor_speeds):
     quad.start_thread(dt=QUAD_DYNAMICS_UPDATE,time_scaling=TIME_SCALING)
     ctrl.start_thread(update_rate=CONTROLLER_DYNAMICS_UPDATE,time_scaling=TIME_SCALING)
     # Update the GUI while switching between destination poitions
+    print(quad.get_state('q1')[6:])
     global run
     while(run==True):
         #ctrl.update_target(GOALS[0])
@@ -51,7 +52,7 @@ def Single_AI(gui_on, get_motor_speeds):
             gui_object.update()
         # Once quad gets below height of 2, kills simulation
         if quad.get_state('q1')[2] < 1:
-            print(quad.get_orientation('q1'))
+            print(quad.get_state('q1')[6:])
             run = False
     quad.stop_thread()
     ctrl.stop_thread()
@@ -82,7 +83,7 @@ if __name__ == "__main__":
         for x in range(1000):
             run = True
             print("starting simulation: ", x)
-            if x == 99:
+            if x == 999:
                 gui_on = True
             Single_AI(gui_on, AI.get_motor_speeds)
             print("simulation finished, starting training")

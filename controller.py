@@ -27,12 +27,12 @@ class Controller_AI():
     def update(self):
         [dest_x,dest_y,dest_z] = self.target
         data = [x,y,z,x_dot,y_dot,z_dot,theta,phi,gamma,theta_dot,phi_dot,gamma_dot] = self.get_state(self.quad_identifier)
-        reward = -(theta + phi + gamma)**2
+        reward = -(theta)**2 + -(phi)**2 + -(gamma)**2 + -(theta_dot)**2 + -(phi_dot)**2 + -(gamma_dot)**2
         #print(reward)
         action = self.get_motor_speeds(reward, data)
-        range = self.MOTOR_LIMITS[1] - self.MOTOR_LIMITS[0]
+        range_motors = self.MOTOR_LIMITS[1] - self.MOTOR_LIMITS[0]
         action = np.array(action)
-        action *= range
+        action *= range_motors #/ 4
         action += self.MOTOR_LIMITS[0]
         [m1, m2, m3, m4] = action
         M = np.clip([m1,m2,m3,m4],self.MOTOR_LIMITS[0],self.MOTOR_LIMITS[1])
